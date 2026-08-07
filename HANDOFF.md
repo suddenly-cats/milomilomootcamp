@@ -25,7 +25,7 @@ bottom-foured a given lobby.
 | Frontend leaderboard | **Verified** against mid-event and finished simulated states |
 | Dev server | Done, smoke-tested (200s, path traversal blocked) |
 | Offline simulator | Done, converges 32 players → 1 winner |
-| Deployment | Workflow written (Actions + Pages); **repo setup not done, never run** |
+| Deployment | **Live** at <https://suddenly-cats.github.io/milomilomootcamp/> |
 | Real roster | 4 real VN players, all verified live; **more to be added** |
 | Real ruleset numbers | **Schedule is still the 32-player default** — see the warning below |
 
@@ -197,14 +197,18 @@ Regenerate the schedule once the field is final: `npm run simulate -- --generate
 Sanity-check it end to end with `npm run simulate -- --players <N>`, which will warn if the
 curve does not converge to a single winner.
 
-## Deployment
+## Deployment — live
 
-`.github/workflows/poll.yml` polls every 30 minutes, commits `web/data/`, and publishes
-`web/` to Pages. One-time setup before it will work:
+- **Site:** <https://suddenly-cats.github.io/milomilomootcamp/>
+- **Repo:** <https://github.com/suddenly-cats/milomilomootcamp> (public)
 
-1. Create the GitHub repo, commit, and push.
-2. Settings → Pages → **Source: GitHub Actions** (not "deploy from a branch").
-3. Settings → Actions → General → Workflow permissions → **Read and write**.
+`.github/workflows/poll.yml` polls every 30 minutes, commits `web/data/`, and publishes `web/`
+to Pages. Verified end to end on 2026-08-07: the workflow ran, fetched all four players from
+the runner, committed `poll: update leaderboard state`, and deployed. **MetaTFT is reachable
+from GitHub Actions runners** — worth recording, since the original build sandbox was blocked.
+
+The one-time repo setup is already done (Pages source set to GitHub Actions, workflow
+permissions set to read/write). Redoing it is only necessary in a fresh fork.
 
 Two traps that are already handled, and should stay handled:
 
@@ -216,7 +220,15 @@ Two traps that are already handled, and should stay handled:
   authoritative.
 
 Scheduled workflows are disabled automatically on repos with no activity for 60 days, which
-matters if an event runs long or the repo sits idle between seasons.
+matters if an event runs long or the repo sits idle between seasons. (In practice the poller's
+own commits count as activity while an event is running, so this only bites between seasons.)
+
+Runs currently emit a Node 20 deprecation warning: `actions/checkout@v4` and
+`actions/setup-node@v4` are being forced onto Node 24. Harmless today; bump to v5 when
+convenient.
+
+`fixtures/profile.json` has had its `puuid` redacted, since the repo is public and the parser
+never reads that field. Do not paste a raw payload back in.
 
 ## Running it
 
