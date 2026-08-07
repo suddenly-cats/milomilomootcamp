@@ -230,6 +230,35 @@ convenient.
 `fixtures/profile.json` has had its `puuid` redacted, since the repo is public and the parser
 never reads that field. Do not paste a raw payload back in.
 
+**Pages serves `index.html` with `Cache-Control: max-age=600`.** After deploying a frontend
+change, browsers keep showing the old page for up to ten minutes — it looks exactly like a
+failed deploy. Before debugging, confirm what the server actually has:
+
+```bash
+curl -s https://suddenly-cats.github.io/milomilomootcamp/ | grep -c rank-icon
+```
+
+`data/state.json` is exempt: the page fetches it with `cache: "no-store"`, which is why ranks
+refresh immediately while markup changes lag.
+
+Pushing to `main` does **not** deploy — the workflow only runs on cron and manual dispatch, so
+a frontend change waits for the next poll (≤30 min) unless you run
+`gh workflow run poll.yml`. Adding a `push` trigger would fix that; it was left off to keep
+pushes from making live API calls. There is no infinite-loop risk if you add it, because
+commits made with the default `GITHUB_TOKEN` do not trigger workflows.
+
+## Frontend notes
+
+Rank badges (`rankIcon` in `web/index.html`) are **our own SVG shields, not Riot's emblem
+art** — nothing hotlinked, nothing to license, page stays self-contained. Chevron count rises
+through the apex tiers and Challenger gets a crown, so tiers do not depend on colour alone;
+the badges are `aria-hidden` because the full rank text sits beside them.
+
+Player names link to the **browser-shape** MetaTFT URL — friendly lowercase region and a dash,
+`.../player/vn/Raikugen-four` — which is *not* the platform-id-and-slash shape the API takes
+(`VN2/Raikugen/four`). Both were verified live, including `VP Succulento`, whose game name
+contains a space and percent-encodes to `VP%20Succulento-poggo`.
+
 ## Running it
 
 ```bash
