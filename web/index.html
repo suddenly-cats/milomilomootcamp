@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>MiloMiloMootcamp</title>
+<style>
+  :root {
+    --bg: #0d1017;
+    --panel: #151a24;
+    --panel-2: #1b2130;
+    --line: #262e3d;
+    --text: #e7ecf3;
+    --muted: #8b96aa;
+    --accent: #d8a657;
+    --safe: #4ea87a;
+    --danger: #d16a6a;
+    --dead: #5a6273;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font: 15px/1.5 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 32px 20px 80px; }
+
+  header { display: flex; flex-wrap: wrap; gap: 16px; align-items: baseline; justify-content: space-between; margin-bottom: 8px; }
+  h1 { font-size: 26px; margin: 0; letter-spacing: -0.01em; }
+  .updated { color: var(--muted); font-size: 13px; font-variant-numeric: tabular-nums; }
+
+  .bar { display: flex; flex-wrap: wrap; gap: 10px; margin: 20px 0 24px; }
+  .stat {
+    background: var(--panel); border: 1px solid var(--line); border-radius: 10px;
+    padding: 10px 14px; min-width: 128px;
+  }
+  .stat .k { color: var(--muted); font-size: 11px; text-transform: uppercase; letter-spacing: .07em; }
+  .stat .v { font-size: 20px; font-weight: 600; font-variant-numeric: tabular-nums; margin-top: 2px; }
+  .stat .v.accent { color: var(--accent); }
+
+  table { width: 100%; border-collapse: collapse; background: var(--panel); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
+  thead th {
+    text-align: left; font-size: 11px; text-transform: uppercase; letter-spacing: .07em;
+    color: var(--muted); font-weight: 600; padding: 12px 14px; border-bottom: 1px solid var(--line);
+    background: var(--panel-2);
+  }
+  tbody td { padding: 11px 14px; border-bottom: 1px solid var(--line); vertical-align: middle; }
+  tbody tr:last-child td { border-bottom: none; }
+  tbody tr.out { color: var(--dead); }
+  tbody tr.out .name { text-decoration: line-through; text-decoration-thickness: 1px; }
+  tbody tr.danger td.pos { box-shadow: inset 3px 0 0 var(--danger); }
+
+  td.pos { width: 52px; font-variant-numeric: tabular-nums; font-weight: 600; color: var(--muted); }
+  td.pos .medal { color: var(--accent); }
+  .name { font-weight: 600; }
+  .team { color: var(--muted); font-size: 12px; margin-left: 8px; font-weight: 400; }
+  .region { color: var(--muted); font-size: 11px; letter-spacing: .04em; }
+  td.rating { font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .lp { color: var(--muted); font-size: 12px; }
+  .delta { font-size: 12px; font-variant-numeric: tabular-nums; }
+  .delta.up { color: var(--safe); }
+  .delta.down { color: var(--danger); }
+
+  .lives { letter-spacing: 2px; white-space: nowrap; }
+  .heart { color: var(--danger); }
+  .heart.spent { color: var(--line); }
+
+  .placements { display: flex; gap: 4px; }
+  .pill {
+    display: inline-grid; place-items: center; width: 20px; height: 20px; border-radius: 5px;
+    font-size: 11px; font-weight: 700; background: var(--panel-2); color: var(--muted);
+  }
+  .pill.top1 { background: rgba(216,166,87,.18); color: var(--accent); }
+  .pill.top4 { background: rgba(78,168,122,.16); color: var(--safe); }
+
+  tr.cutrow td { background: rgba(209,106,106,.07); padding: 6px 14px; }
+  .cutlabel {
+    color: var(--danger); font-size: 11px; text-transform: uppercase; letter-spacing: .1em;
+    font-weight: 700; display: flex; align-items: center; gap: 10px;
+  }
+  .cutlabel::after { content: ""; flex: 1; height: 1px; background: linear-gradient(to right, var(--danger), transparent); }
+
+  h2 { font-size: 13px; text-transform: uppercase; letter-spacing: .07em; color: var(--muted); margin: 36px 0 12px; }
+  .feed { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 6px 0; }
+  .ev { display: flex; gap: 12px; padding: 9px 16px; font-size: 14px; border-bottom: 1px solid var(--line); }
+  .ev:last-child { border-bottom: none; }
+  .ev time { color: var(--muted); font-size: 12px; min-width: 92px; font-variant-numeric: tabular-nums; }
+  .ev.eliminated strong { color: var(--danger); }
+  .ev.winner strong { color: var(--accent); }
+
+  .empty, .error { color: var(--muted); padding: 40px 16px; text-align: center; }
+  .error { color: var(--danger); }
+  footer { color: var(--muted); font-size: 12px; margin-top: 40px; text-align: center; }
+  @media (max-width: 720px) {
+    .hide-sm { display: none; }
+    .wrap { padding: 20px 12px 60px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1 id="title">MiloMiloMootcamp</h1>
+    <div class="updated" id="updated"></div>
+  </header>
+
+  <div class="bar" id="stats"></div>
+
+  <div id="board"><div class="empty">Loading…</div></div>
+
+  <h2>Activity</h2>
+  <div class="feed" id="feed"></div>
+
+  <footer>Rank data from MetaTFT. Lives are only taken at scheduled checkpoints.</footer>
+</div>
+
+<script type="module">
+const REFRESH_MS = 60_000;
+
+const $ = (id) => document.getElementById(id);
+const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;" }[c]));
+
+async function load() {
+  const [state, rules] = await Promise.all([
+    fetch("data/state.json", { cache: "no-store" }).then((r) => {
+      if (!r.ok) throw new Error(`state.json: HTTP ${r.status}`);
+      return r.json();
+    }),
+    fetch("data/rules.json", { cache: "no-store" }).then((r) => (r.ok ? r.json() : null)).catch(() => null),
+  ]);
+  return { state, rules };
+}
+
+/** Mirrors compareForLeaderboard in src/rules.ts. */
+function compare(a, b) {
+  if (a.rank && !b.rank) return -1;
+  if (!a.rank && b.rank) return 1;
+  if (a.rank && b.rank) {
+    if (b.rank.numeric !== a.rank.numeric) return b.rank.numeric - a.rank.numeric;
+    if (a.rank.numGames !== b.rank.numGames) return a.rank.numGames - b.rank.numGames;
+  }
+  return a.id.localeCompare(b.id);
+}
+
+function nextCheckpoint(rules, state) {
+  if (!rules) return null;
+  const now = Date.now();
+  const i = rules.checkpoints.findIndex(
+    (c, idx) => !state.checkpointsApplied.includes(idx) && new Date(c.at).getTime() > now,
+  );
+  return i === -1 ? null : { ...rules.checkpoints[i], index: i };
+}
+
+function countdown(iso) {
+  const ms = new Date(iso).getTime() - Date.now();
+  if (ms <= 0) return "due";
+  const h = Math.floor(ms / 3.6e6);
+  const m = Math.floor((ms % 3.6e6) / 60000);
+  return h >= 24 ? `${Math.floor(h / 24)}d ${h % 24}h` : h >= 1 ? `${h}h ${m}m` : `${m}m`;
+}
+
+function hearts(lives, max) {
+  let out = "";
+  for (let i = 0; i < max; i++) {
+    out += `<span class="heart${i < lives ? "" : " spent"}">${i < lives ? "♥" : "♡"}</span>`;
+  }
+  return out;
+}
+
+function render({ state, rules }) {
+  document.title = state.title ?? "MiloMiloMootcamp";
+  $("title").textContent = state.title ?? "MiloMiloMootcamp";
+  $("updated").textContent = state.lastPolledAt
+    ? `updated ${new Date(state.lastPolledAt).toLocaleString()}`
+    : "not yet polled";
+
+  const alive = state.players.filter((p) => !p.eliminated).sort(compare);
+  const dead = state.players.filter((p) => p.eliminated)
+    .sort((a, b) => (a.finalPosition ?? 9999) - (b.finalPosition ?? 9999));
+
+  const next = nextCheckpoint(rules, state);
+  const maxLives = rules?.startingLives ?? Math.max(1, ...state.players.map((p) => p.lives));
+
+  // ---- stat bar
+  const stats = [
+    { k: "Alive", v: alive.length, accent: false },
+    { k: "Eliminated", v: dead.length, accent: false },
+  ];
+  if (next) {
+    stats.push({ k: `Next cut (${next.label ?? "#" + (next.index + 1)})`, v: `top ${next.cutLine}`, accent: true });
+    stats.push({ k: "In", v: countdown(next.at), accent: false });
+  }
+  if (state.winnerId) stats.unshift({ k: "Winner", v: state.winnerId, accent: true });
+  $("stats").innerHTML = stats
+    .map((s) => `<div class="stat"><div class="k">${esc(s.k)}</div><div class="v${s.accent ? " accent" : ""}">${esc(s.v)}</div></div>`)
+    .join("");
+
+  // ---- board
+  if (!state.players.length) {
+    $("board").innerHTML = `<div class="empty">No players on the roster yet.</div>`;
+    return;
+  }
+
+  const rows = [];
+  const cut = next?.cutLine ?? null;
+
+  alive.forEach((p, i) => {
+    const pos = i + 1;
+    if (cut !== null && pos === cut + 1) {
+      rows.push(`<tr class="cutrow"><td colspan="6"><div class="cutlabel">cut line — top ${cut} survive</div></td></tr>`);
+    }
+    rows.push(row(p, pos, maxLives, cut !== null && pos > cut));
+  });
+
+  dead.forEach((p) => rows.push(row(p, p.finalPosition ?? "—", maxLives, false, true)));
+
+  $("board").innerHTML = `
+    <table>
+      <thead><tr>
+        <th>#</th><th>Player</th><th>Rank</th>
+        <th class="hide-sm">Change</th><th>Lives</th><th class="hide-sm">Recent</th>
+      </tr></thead>
+      <tbody>${rows.join("")}</tbody>
+    </table>`;
+
+  // ---- feed
+  const events = [...(state.events ?? [])].reverse().slice(0, 25);
+  $("feed").innerHTML = events.length
+    ? events.map(eventRow).join("")
+    : `<div class="empty">Nothing has happened yet.</div>`;
+}
+
+function row(p, pos, maxLives, inDanger, isDead = false) {
+  const medal = pos === 1 && isDead === false ? "medal" : "";
+  const delta = p.rank && p.rankAtLastCheckpoint
+    ? p.rank.numeric - p.rankAtLastCheckpoint.numeric
+    : null;
+  const deltaHtml = delta === null || delta === 0
+    ? `<span class="delta">—</span>`
+    : `<span class="delta ${delta > 0 ? "up" : "down"}">${delta > 0 ? "+" : ""}${delta}</span>`;
+
+  const pills = (p.recentPlacements ?? []).slice(0, 5).map((m) =>
+    `<span class="pill ${m.placement === 1 ? "top1" : m.placement <= 4 ? "top4" : ""}">${m.placement}</span>`
+  ).join("");
+
+  return `<tr class="${isDead ? "out" : ""}${inDanger ? " danger" : ""}">
+    <td class="pos"><span class="${medal}">${esc(pos)}</span></td>
+    <td>
+      <span class="name">${esc(p.displayName)}</span>
+      ${p.team ? `<span class="team">${esc(p.team)}</span>` : ""}
+      <div class="region">${esc(p.region)}${p.lastError ? " · stale" : ""}</div>
+    </td>
+    <td class="rating">${p.rank ? esc(p.rank.text) : `<span class="lp">no data</span>`}
+      ${p.rank ? `<div class="lp">${p.rank.numGames} games</div>` : ""}</td>
+    <td class="hide-sm">${deltaHtml}</td>
+    <td class="lives">${isDead ? `<span class="lp">out</span>` : hearts(p.lives, maxLives)}</td>
+    <td class="hide-sm"><div class="placements">${pills}</div></td>
+  </tr>`;
+}
+
+function eventRow(e) {
+  const when = new Date(e.at).toLocaleDateString(undefined, { month: "short", day: "numeric" });
+  let text;
+  if (e.type === "winner") {
+    text = `<strong>${esc(e.playerId)}</strong> is the last player standing.`;
+  } else if (e.type === "eliminated") {
+    text = `<strong>${esc(e.playerId)}</strong> eliminated — finished ${esc(e.finalPosition ?? "—")}.`;
+  } else {
+    const why = e.reason === "insufficient_games" ? "did not play enough games"
+      : e.reason === "no_rank_data" ? "had no rank data"
+      : `sat ${esc(e.position)} with a cut at ${esc(e.cutLine)}`;
+    text = `${esc(e.playerId)} lost a life — ${why}. ${esc(e.livesRemaining)} left.`;
+  }
+  return `<div class="ev ${esc(e.type)}"><time>${when}</time><span>${text}</span></div>`;
+}
+
+async function tick() {
+  try {
+    render(await load());
+  } catch (err) {
+    $("board").innerHTML = `<div class="error">Could not load the leaderboard: ${esc(err.message)}</div>`;
+  }
+}
+
+tick();
+setInterval(tick, REFRESH_MS);
+</script>
+</body>
+</html>

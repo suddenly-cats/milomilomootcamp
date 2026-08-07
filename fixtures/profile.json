@@ -1,0 +1,57 @@
+{
+  "summoner": {
+    "id": 138147192,
+    "puuid": "REDACTED-not-used-by-the-parser",
+    "summoner_region": "vn2",
+    "profile_icon_id": 7193,
+    "summoner_level": 1392,
+    "riot_id": "Raikugen#four",
+    "is_profile_hidden": false
+  },
+  "ranked": {
+    "num_games": 450,
+    "rating_text": "GRANDMASTER I 742 LP",
+    "rating_numeric": 3542,
+    "peak_rating": "CHALLENGER I 1205 LP",
+    "peak_rating_numeric": 4005,
+    "timestamp": "2026-07-28T16:04:48.325228"
+  },
+  "matches": [
+    {
+      "placement": 2,
+      "riot_match_id": "VN2_1519666119",
+      "match_timestamp": 1785254285900,
+      "queue_id": 1100,
+      "rating_queue_id": 1100,
+      "tft_set": "TFTSet17",
+      "patch": "16.14"
+    },
+    {
+      "placement": 7,
+      "riot_match_id": "VN2_1519600001",
+      "match_timestamp": 1785250000000,
+      "queue_id": 1100,
+      "rating_queue_id": 1100,
+      "tft_set": "TFTSet17",
+      "patch": "16.14"
+    },
+    {
+      "placement": 1,
+      "riot_match_id": "VN2_1519500002",
+      "match_timestamp": 1785240000000,
+      "queue_id": 1090,
+      "rating_queue_id": 1090,
+      "tft_set": "TFTSet17",
+      "patch": "16.14"
+    },
+    {
+      "placement": 4,
+      "riot_match_id": "VN2_1400000003",
+      "match_timestamp": 1770000000000,
+      "queue_id": 1100,
+      "rating_queue_id": 1100,
+      "tft_set": "TFTSet13",
+      "patch": "15.1"
+    }
+  ]
+}

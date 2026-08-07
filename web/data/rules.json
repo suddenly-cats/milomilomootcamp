@@ -1,0 +1,103 @@
+{
+  "title": "MiloMiloMootcamp",
+  "tftSet": "TFTSet17",
+  "queueId": 1100,
+  "startingLives": 3,
+  "penaliseMissingRank": false,
+  "_comment": [
+    "Checkpoints are the only moments lives are taken. Polling is separate and",
+    "runs far more often, purely to keep the board fresh.",
+    "cutLine is a leaderboard POSITION among surviving players: a cutLine of 30",
+    "means anyone sitting 31st or worse loses a life at that checkpoint.",
+    "minGames is optional; when set, survivors who played fewer than that many",
+    "ranked games since the previous checkpoint also lose a life.",
+    "This sample schedule assumes a 32-player field over 14 days. Regenerate it",
+    "for your real roster size with: npm run simulate -- --generate <fieldSize>"
+  ],
+  "checkpoints": [
+    {
+      "at": "2026-08-08T04:00:00.000Z",
+      "label": "Day 1",
+      "cutLine": 30,
+      "minGames": 3
+    },
+    {
+      "at": "2026-08-09T04:00:00.000Z",
+      "label": "Day 2",
+      "cutLine": 28,
+      "minGames": 3
+    },
+    {
+      "at": "2026-08-10T04:00:00.000Z",
+      "label": "Day 3",
+      "cutLine": 25,
+      "minGames": 3
+    },
+    {
+      "at": "2026-08-11T04:00:00.000Z",
+      "label": "Day 4",
+      "cutLine": 23,
+      "minGames": 3
+    },
+    {
+      "at": "2026-08-12T04:00:00.000Z",
+      "label": "Day 5",
+      "cutLine": 21,
+      "minGames": 3
+    },
+    {
+      "at": "2026-08-13T04:00:00.000Z",
+      "label": "Day 6",
+      "cutLine": 19,
+      "minGames": 3
+    },
+    {
+      "at": "2026-08-14T04:00:00.000Z",
+      "label": "Day 7",
+      "cutLine": 17,
+      "minGames": 3
+    },
+    {
+      "at": "2026-08-15T04:00:00.000Z",
+      "label": "Day 8",
+      "cutLine": 14,
+      "minGames": 3
+    },
+    {
+      "at": "2026-08-16T04:00:00.000Z",
+      "label": "Day 9",
+      "cutLine": 12,
+      "minGames": 3
+    },
+    {
+      "at": "2026-08-17T04:00:00.000Z",
+      "label": "Day 10",
+      "cutLine": 10,
+      "minGames": 3
+    },
+    {
+      "at": "2026-08-18T04:00:00.000Z",
+      "label": "Day 11",
+      "cutLine": 8,
+      "minGames": 3
+    },
+    {
+      "at": "2026-08-19T04:00:00.000Z",
+      "label": "Day 12",
+      "cutLine": 5,
+      "minGames": 3
+    },
+    {
+      "at": "2026-08-20T04:00:00.000Z",
+      "label": "Day 13",
+      "cutLine": 3,
+      "minGames": 3
+    },
+    {
+      "at": "2026-08-21T04:00:00.000Z",
+      "label": "Finals",
+      "cutLine": 1,
+      "minGames": 3
+    }
+  ]
+}

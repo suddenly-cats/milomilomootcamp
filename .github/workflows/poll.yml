@@ -1,0 +1,89 @@
+# Polls MetaTFT, applies any due checkpoints, commits the new state, and
+# publishes web/ to GitHub Pages.
+#
+# Deliberately ONE workflow with two jobs rather than a poll workflow plus a
+# separate "deploy on push" workflow: commits pushed with the default
+# GITHUB_TOKEN do not trigger other workflows, so a push-triggered Pages deploy
+# would never fire. Chaining the jobs here avoids that trap entirely.
+
+name: poll
+
+on:
+  schedule:
+    # Every 30 minutes. GitHub's cron is best-effort and can be delayed by ten
+    # minutes or more under load, which is fine: checkpoints are applied by
+    # timestamp, not by "did this run fire on time", and applyDueCheckpoints
+    # catches up on every checkpoint it missed. See "Ruleset semantics" in
+    # HANDOFF.md.
+    - cron: "*/30 * * * *"
+  workflow_dispatch:
+    inputs:
+      no-checkpoints:
+        description: "Refresh ranks without ever taking lives"
+        type: boolean
+        default: false
+
+# Never let two polls write state.json at once. Do not cancel a run in
+# progress — it may be mid-checkpoint, and a cancelled run would still have
+# published its Pages artifact.
+concurrency:
+  group: poll
+  cancel-in-progress: false
+
+jobs:
+  poll:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # to commit web/data back to the repo
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+
+      - run: npm ci
+
+      - name: Poll and apply due checkpoints
+        run: npm run poll ${{ inputs.no-checkpoints && '-- --no-checkpoints' || '' }}
+
+      - name: Commit state
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add web/data
+          # Nothing changed if no rank moved; that is normal, not a failure.
+          if git diff --staged --quiet; then
+            echo "no state change"
+            exit 0
+          fi
+          git commit -m "poll: update leaderboard state"
+          # A concurrent human push would otherwise fail this step.
+          git pull --rebase --autostash
+          git push
+
+  deploy:
+    needs: poll
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      # Check out again rather than reusing the poll job's workspace, so this
+      # picks up the commit the poll job just pushed.
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref }}
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: web
+
+      - id: deployment
+        uses: actions/deploy-pages@v4

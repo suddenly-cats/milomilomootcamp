@@ -1,0 +1,311 @@
+{
+  "version": 1,
+  "title": "MiloMiloMootcamp",
+  "startedAt": "2026-08-07T05:11:07.311Z",
+  "lastPolledAt": "2026-08-07T05:11:07.311Z",
+  "checkpointsApplied": [],
+  "players": [
+    {
+      "id": "Raikugen#four",
+      "gameName": "Raikugen",
+      "tagLine": "four",
+      "region": "VN",
+      "displayName": "Raikugen",
+      "lives": 3,
+      "eliminated": false,
+      "rank": {
+        "text": "GRANDMASTER I 742 LP",
+        "numeric": 3542,
+        "numGames": 450,
+        "readAt": "2026-08-07T05:11:07.801Z"
+      },
+      "rankAtLastCheckpoint": null,
+      "gamesAtLastCheckpoint": null,
+      "recentPlacements": [
+        {
+          "matchId": "VN2_1519666119",
+          "placement": 2,
+          "timestamp": 1785254285900
+        },
+        {
+          "matchId": "VN2_1519094820",
+          "placement": 7,
+          "timestamp": 1785225900442
+        },
+        {
+          "matchId": "VN2_1519063292",
+          "placement": 8,
+          "timestamp": 1785223960356
+        },
+        {
+          "matchId": "VN2_1519024048",
+          "placement": 1,
+          "timestamp": 1785221590041
+        },
+        {
+          "matchId": "VN2_1518981593",
+          "placement": 4,
+          "timestamp": 1785219403563
+        },
+        {
+          "matchId": "VN2_1516972965",
+          "placement": 4,
+          "timestamp": 1785083180238
+        },
+        {
+          "matchId": "VN2_1516883702",
+          "placement": 5,
+          "timestamp": 1785079299224
+        },
+        {
+          "matchId": "VN2_1516841083",
+          "placement": 8,
+          "timestamp": 1785077471868
+        },
+        {
+          "matchId": "VN2_1516578532",
+          "placement": 4,
+          "timestamp": 1785064141442
+        },
+        {
+          "matchId": "VN2_1516538972",
+          "placement": 6,
+          "timestamp": 1785062506182
+        }
+      ],
+      "history": [
+        {
+          "t": "2026-08-07T05:11:07.801Z",
+          "numeric": 3542
+        }
+      ]
+    },
+    {
+      "id": "VP Succulento#poggo",
+      "gameName": "VP Succulento",
+      "tagLine": "poggo",
+      "region": "VN",
+      "displayName": "VP Succulento",
+      "lives": 3,
+      "eliminated": false,
+      "rank": {
+        "text": "MASTER I 0 LP",
+        "numeric": 2800,
+        "numGames": 209,
+        "readAt": "2026-08-07T05:11:07.795Z"
+      },
+      "rankAtLastCheckpoint": null,
+      "gamesAtLastCheckpoint": null,
+      "recentPlacements": [
+        {
+          "matchId": "VN2_1398624802",
+          "placement": 4,
+          "timestamp": 1779137393610
+        },
+        {
+          "matchId": "VN2_1398607661",
+          "placement": 6,
+          "timestamp": 1779135821475
+        },
+        {
+          "matchId": "VN2_1398589942",
+          "placement": 4,
+          "timestamp": 1779133693151
+        },
+        {
+          "matchId": "VN2_1395389978",
+          "placement": 7,
+          "timestamp": 1778971062203
+        },
+        {
+          "matchId": "VN2_1395375390",
+          "placement": 6,
+          "timestamp": 1778969273633
+        },
+        {
+          "matchId": "VN2_1395351716",
+          "placement": 4,
+          "timestamp": 1778967211432
+        },
+        {
+          "matchId": "VN2_1395334703",
+          "placement": 7,
+          "timestamp": 1778965706632
+        },
+        {
+          "matchId": "VN2_1395315643",
+          "placement": 4,
+          "timestamp": 1778963294801
+        },
+        {
+          "matchId": "VN2_1395296399",
+          "placement": 8,
+          "timestamp": 1778962000965
+        },
+        {
+          "matchId": "VN2_1395268809",
+          "placement": 6,
+          "timestamp": 1778960143717
+        }
+      ],
+      "history": [
+        {
+          "t": "2026-08-07T05:11:07.795Z",
+          "numeric": 2800
+        }
+      ]
+    },
+    {
+      "id": "quanggisme#1234",
+      "gameName": "quanggisme",
+      "tagLine": "1234",
+      "region": "VN",
+      "displayName": "quanggisme",
+      "lives": 3,
+      "eliminated": false,
+      "rank": {
+        "text": "MASTER I 0 LP",
+        "numeric": 2800,
+        "numGames": 450,
+        "readAt": "2026-08-07T05:11:07.793Z"
+      },
+      "rankAtLastCheckpoint": null,
+      "gamesAtLastCheckpoint": null,
+      "recentPlacements": [
+        {
+          "matchId": "VN2_1455325362",
+          "placement": 6,
+          "timestamp": 1781838589146
+        },
+        {
+          "matchId": "VN2_1443789031",
+          "placement": 5,
+          "timestamp": 1781505852560
+        },
+        {
+          "matchId": "VN2_1443713399",
+          "placement": 6,
+          "timestamp": 1781504218143
+        },
+        {
+          "matchId": "VN2_1443617773",
+          "placement": 2,
+          "timestamp": 1781501990930
+        },
+        {
+          "matchId": "VN2_1443529137",
+          "placement": 2,
+          "timestamp": 1781499881385
+        },
+        {
+          "matchId": "VN2_1440461904",
+          "placement": 8,
+          "timestamp": 1781408657083
+        },
+        {
+          "matchId": "VN2_1438455467",
+          "placement": 8,
+          "timestamp": 1781320833188
+        },
+        {
+          "matchId": "VN2_1438426326",
+          "placement": 5,
+          "timestamp": 1781319091264
+        },
+        {
+          "matchId": "VN2_1436999967",
+          "placement": 1,
+          "timestamp": 1781236779659
+        },
+        {
+          "matchId": "VN2_1436988166",
+          "placement": 8,
+          "timestamp": 1781236125488
+        }
+      ],
+      "history": [
+        {
+          "t": "2026-08-07T05:11:07.793Z",
+          "numeric": 2800
+        }
+      ]
+    },
+    {
+      "id": "zod1ac#yotlo",
+      "gameName": "zod1ac",
+      "tagLine": "yotlo",
+      "region": "VN",
+      "displayName": "zod1ac",
+      "lives": 3,
+      "eliminated": false,
+      "rank": {
+        "text": "MASTER I 451 LP",
+        "numeric": 3251,
+        "numGames": 323,
+        "readAt": "2026-08-07T05:11:08.225Z"
+      },
+      "rankAtLastCheckpoint": null,
+      "gamesAtLastCheckpoint": null,
+      "recentPlacements": [
+        {
+          "matchId": "VN2_1509760551",
+          "placement": 3,
+          "timestamp": 1784651028611
+        },
+        {
+          "matchId": "VN2_1509596325",
+          "placement": 5,
+          "timestamp": 1784644121899
+        },
+        {
+          "matchId": "VN2_1508280870",
+          "placement": 7,
+          "timestamp": 1784557498815
+        },
+        {
+          "matchId": "VN2_1508231852",
+          "placement": 6,
+          "timestamp": 1784555464744
+        },
+        {
+          "matchId": "VN2_1505270659",
+          "placement": 3,
+          "timestamp": 1784368282745
+        },
+        {
+          "matchId": "VN2_1503060735",
+          "placement": 4,
+          "timestamp": 1784221110514
+        },
+        {
+          "matchId": "VN2_1503019141",
+          "placement": 5,
+          "timestamp": 1784218887748
+        },
+        {
+          "matchId": "VN2_1502605400",
+          "placement": 2,
+          "timestamp": 1784200689824
+        },
+        {
+          "matchId": "VN2_1501255876",
+          "placement": 1,
+          "timestamp": 1784113796363
+        },
+        {
+          "matchId": "VN2_1500442758",
+          "placement": 5,
+          "timestamp": 1784050153415
+        }
+      ],
+      "history": [
+        {
+          "t": "2026-08-07T05:11:08.225Z",
+          "numeric": 3251
+        }
+      ]
+    }
+  ],
+  "events": [],
+  "winnerId": null
+}

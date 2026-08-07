@@ -1,0 +1,20 @@
+{
+  "name": "boxbox-survivor",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "TFT ladder survival leaderboard: polls MetaTFT for a fixed roster, ranks them, and eliminates players below a rising cut line.",
+  "scripts": {
+    "poll": "tsx src/poll.ts",
+    "checkpoint": "tsx src/poll.ts --checkpoint",
+    "serve": "tsx src/serve.ts",
+    "simulate": "tsx src/simulate.ts",
+    "test": "node scripts/run-tests.mjs",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2"
+  }
+}
