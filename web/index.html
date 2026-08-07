@@ -55,9 +55,17 @@
   td.pos { width: 52px; font-variant-numeric: tabular-nums; font-weight: 600; color: var(--muted); }
   td.pos .medal { color: var(--accent); }
   .name { font-weight: 600; }
+  a.name { color: inherit; text-decoration: none; }
+  a.name:hover, a.name:focus-visible { text-decoration: underline; text-underline-offset: 2px; color: var(--accent); }
+  /* The row already turns muted when a player is out; keep the link from re-brightening it. */
+  tbody tr.out a.name:hover { color: inherit; }
   .team { color: var(--muted); font-size: 12px; margin-left: 8px; font-weight: 400; }
   .region { color: var(--muted); font-size: 11px; letter-spacing: .04em; }
   td.rating { font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .rating-line { display: flex; align-items: center; gap: 7px; }
+  .rank-icon { width: 18px; height: 18px; flex: none; display: block; }
+  /* Eliminated rows are greyed out, so drain the tier colour out of their badge too. */
+  tbody tr.out .rank-icon { filter: grayscale(1); opacity: .5; }
   .lp { color: var(--muted); font-size: 12px; }
   .delta { font-size: 12px; font-variant-numeric: tabular-nums; }
   .delta.up { color: var(--safe); }
@@ -232,6 +240,72 @@ function render({ state, rules }) {
     : `<div class="empty">Nothing has happened yet.</div>`;
 }
 
+// Tier colours for the rank badge. These are our own badges, deliberately not
+// Riot's emblem art — no hotlinking someone else's CDN, and nothing to license.
+const TIERS = {
+  IRON:        "#7c7a77",
+  BRONZE:      "#a2703c",
+  SILVER:      "#9fadb8",
+  GOLD:        "#e3b23c",
+  PLATINUM:    "#3fb8a6",
+  EMERALD:     "#2fae6b",
+  DIAMOND:     "#5d8ede",
+  MASTER:      "#a259d9",
+  GRANDMASTER: "#d4574e",
+  CHALLENGER:  "#e8c45c",
+};
+const MASTER_FLOOR = 2800;
+
+/**
+ * The tier name out of "GRANDMASTER I 742 LP". Prefer the text MetaTFT gave us;
+ * fall back to the numeric only to distinguish Master+ from everything else,
+ * since the sub-Master numeric layout is inferred rather than confirmed.
+ */
+function tierOf(rank) {
+  if (!rank) return null;
+  const word = String(rank.text ?? "").trim().toUpperCase().split(/\s+/)[0];
+  if (word in TIERS) return word;
+  return typeof rank.numeric === "number" && rank.numeric >= MASTER_FLOOR ? "MASTER" : null;
+}
+
+/**
+ * A shield badge, with chevron count rising through the apex tiers so they stay
+ * distinguishable without relying on colour alone. Marked aria-hidden because
+ * the full rank text sits right next to it.
+ */
+function rankIcon(tier) {
+  const color = TIERS[tier];
+  if (!color) return "";
+  // Challenger takes two chevrons, not three: the third would collide with the
+  // crown. The crown is what distinguishes it, so it loses nothing.
+  const chevrons = tier === "CHALLENGER" ? 2 : tier === "GRANDMASTER" ? 3 : tier === "MASTER" ? 2 : 1;
+  const baseY = chevrons === 3 ? 16.6 : chevrons === 2 ? 15.4 : 13.8;
+  const marks = Array.from({ length: chevrons }, (_, i) => {
+    const y = baseY - i * 3.4;
+    return `<path d="M7.6 ${y} L12 ${(y - 3).toFixed(1)} L16.4 ${y}" fill="none" stroke="${color}" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>`;
+  }).join("");
+  const crown = tier === "CHALLENGER"
+    ? `<path d="M8.4 8.2 L10.2 5.6 L12 7.6 L13.8 5.6 L15.6 8.2 Z" fill="${color}"/>`
+    : "";
+  return `<svg class="rank-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+    <path d="M12 1.6 L20.8 5.4 V12 C20.8 16.9 17 20.4 12 22.4 C7 20.4 3.2 16.9 3.2 12 V5.4 Z"
+          fill="${color}" fill-opacity=".16" stroke="${color}" stroke-width="1.4" stroke-linejoin="round"/>
+    ${marks}${crown}
+  </svg>`;
+}
+
+/**
+ * The public MetaTFT profile, e.g. https://www.metatft.com/player/vn/Raikugen-four
+ * Note this is the *browser* URL shape: friendly lowercase region and a dash
+ * between name and tag — not the platform id and slash the API takes.
+ */
+function metatftUrl(p) {
+  if (!p.gameName || !p.tagLine || !p.region) return null;
+  const region = String(p.region).toLowerCase();
+  return `https://www.metatft.com/player/${encodeURIComponent(region)}/` +
+    `${encodeURIComponent(p.gameName)}-${encodeURIComponent(p.tagLine)}`;
+}
+
 function row(p, pos, maxLives, inDanger, isDead = false) {
   const medal = pos === 1 && isDead === false ? "medal" : "";
   const delta = p.rank && p.rankAtLastCheckpoint
@@ -241,6 +315,8 @@ function row(p, pos, maxLives, inDanger, isDead = false) {
     ? `<span class="delta">—</span>`
     : `<span class="delta ${delta > 0 ? "up" : "down"}">${delta > 0 ? "+" : ""}${delta}</span>`;
 
+  const profile = metatftUrl(p);
+
   const pills = (p.recentPlacements ?? []).slice(0, 5).map((m) =>
     `<span class="pill ${m.placement === 1 ? "top1" : m.placement <= 4 ? "top4" : ""}">${m.placement}</span>`
   ).join("");
@@ -248,12 +324,18 @@ function row(p, pos, maxLives, inDanger, isDead = false) {
   return `<tr class="${isDead ? "out" : ""}${inDanger ? " danger" : ""}">
     <td class="pos"><span class="${medal}">${esc(pos)}</span></td>
     <td>
-      <span class="name">${esc(p.displayName)}</span>
+      ${profile
+        ? `<a class="name" href="${esc(profile)}" target="_blank" rel="noopener noreferrer"
+              title="${esc(p.gameName)}#${esc(p.tagLine)} on MetaTFT">${esc(p.displayName)}</a>`
+        : `<span class="name">${esc(p.displayName)}</span>`}
       ${p.team ? `<span class="team">${esc(p.team)}</span>` : ""}
       <div class="region">${esc(p.region)}${p.lastError ? " · stale" : ""}</div>
     </td>
-    <td class="rating">${p.rank ? esc(p.rank.text) : `<span class="lp">no data</span>`}
-      ${p.rank ? `<div class="lp">${p.rank.numGames} games</div>` : ""}</td>
+    <td class="rating">
+      ${p.rank
+        ? `<div class="rating-line">${rankIcon(tierOf(p.rank))}<span>${esc(p.rank.text)}</span></div>
+           <div class="lp">${p.rank.numGames} games</div>`
+        : `<span class="lp">no data</span>`}</td>
     <td class="hide-sm">${deltaHtml}</td>
     <td class="lives">${isDead ? `<span class="lp">out</span>` : hearts(p.lives, maxLives)}</td>
     <td class="hide-sm"><div class="placements">${pills}</div></td>
