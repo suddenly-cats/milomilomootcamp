@@ -2,8 +2,10 @@
   "version": 1,
   "title": "MiloMiloMootcamp",
   "startedAt": "2026-08-07T05:11:07.311Z",
-  "lastPolledAt": "2026-08-08T03:25:21.604Z",
-  "checkpointsApplied": [],
+  "lastPolledAt": "2026-08-08T04:35:25.792Z",
+  "checkpointsApplied": [
+    0
+  ],
   "players": [
     {
       "id": "Raikugen#four",
@@ -17,10 +19,15 @@
         "text": "GRANDMASTER I 742 LP",
         "numeric": 3542,
         "numGames": 450,
-        "readAt": "2026-08-08T03:25:22.273Z"
+        "readAt": "2026-08-08T04:35:26.603Z"
       },
-      "rankAtLastCheckpoint": null,
-      "gamesAtLastCheckpoint": null,
+      "rankAtLastCheckpoint": {
+        "text": "GRANDMASTER I 742 LP",
+        "numeric": 3542,
+        "numGames": 450,
+        "readAt": "2026-08-08T04:35:26.603Z"
+      },
+      "gamesAtLastCheckpoint": 450,
       "recentPlacements": [
         {
           "matchId": "VN2_1519666119",
@@ -92,10 +99,15 @@
         "text": "MASTER I 0 LP",
         "numeric": 2800,
         "numGames": 209,
-        "readAt": "2026-08-08T03:25:22.294Z"
+        "readAt": "2026-08-08T04:35:26.579Z"
       },
-      "rankAtLastCheckpoint": null,
-      "gamesAtLastCheckpoint": null,
+      "rankAtLastCheckpoint": {
+        "text": "MASTER I 0 LP",
+        "numeric": 2800,
+        "numGames": 209,
+        "readAt": "2026-08-08T04:35:26.579Z"
+      },
+      "gamesAtLastCheckpoint": 209,
       "recentPlacements": [
         {
           "matchId": "VN2_1398624802",
@@ -167,10 +179,15 @@
         "text": "MASTER I 0 LP",
         "numeric": 2800,
         "numGames": 450,
-        "readAt": "2026-08-08T03:25:22.405Z"
+        "readAt": "2026-08-08T04:35:26.572Z"
       },
-      "rankAtLastCheckpoint": null,
-      "gamesAtLastCheckpoint": null,
+      "rankAtLastCheckpoint": {
+        "text": "MASTER I 0 LP",
+        "numeric": 2800,
+        "numGames": 450,
+        "readAt": "2026-08-08T04:35:26.572Z"
+      },
+      "gamesAtLastCheckpoint": 450,
       "recentPlacements": [
         {
           "matchId": "VN2_1455325362",
@@ -242,10 +259,15 @@
         "text": "MASTER I 401 LP",
         "numeric": 3201,
         "numGames": 323,
-        "readAt": "2026-08-08T03:25:22.760Z"
+        "readAt": "2026-08-08T04:35:27.119Z"
       },
-      "rankAtLastCheckpoint": null,
-      "gamesAtLastCheckpoint": null,
+      "rankAtLastCheckpoint": {
+        "text": "MASTER I 401 LP",
+        "numeric": 3201,
+        "numGames": 323,
+        "readAt": "2026-08-08T04:35:27.119Z"
+      },
+      "gamesAtLastCheckpoint": 323,
       "recentPlacements": [
         {
           "matchId": "VN2_1509760551",
