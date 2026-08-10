@@ -2,7 +2,7 @@
   "version": 1,
   "title": "MiloMiloMootcamp",
   "startedAt": "2026-08-07T05:11:07.311Z",
-  "lastPolledAt": "2026-08-10T19:30:30.114Z",
+  "lastPolledAt": "2026-08-10T20:42:00.109Z",
   "checkpointsApplied": [
     0,
     1,
@@ -21,7 +21,7 @@
         "text": "GRANDMASTER I 742 LP",
         "numeric": 3542,
         "numGames": 450,
-        "readAt": "2026-08-10T19:30:30.690Z"
+        "readAt": "2026-08-10T20:42:00.907Z"
       },
       "rankAtLastCheckpoint": {
         "text": "GRANDMASTER I 742 LP",
@@ -101,7 +101,7 @@
         "text": "MASTER I 0 LP",
         "numeric": 2800,
         "numGames": 209,
-        "readAt": "2026-08-10T19:30:30.681Z"
+        "readAt": "2026-08-10T20:42:00.905Z"
       },
       "rankAtLastCheckpoint": {
         "text": "MASTER I 0 LP",
@@ -181,7 +181,7 @@
         "text": "MASTER I 0 LP",
         "numeric": 2800,
         "numGames": 450,
-        "readAt": "2026-08-10T19:30:30.670Z"
+        "readAt": "2026-08-10T20:42:00.909Z"
       },
       "rankAtLastCheckpoint": {
         "text": "MASTER I 0 LP",
@@ -261,7 +261,7 @@
         "text": "MASTER I 251 LP",
         "numeric": 3051,
         "numGames": 323,
-        "readAt": "2026-08-10T19:30:31.111Z"
+        "readAt": "2026-08-10T20:42:01.438Z"
       },
       "rankAtLastCheckpoint": {
         "text": "MASTER I 301 LP",
