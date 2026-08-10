@@ -2,10 +2,11 @@
   "version": 1,
   "title": "MiloMiloMootcamp",
   "startedAt": "2026-08-07T05:11:07.311Z",
-  "lastPolledAt": "2026-08-10T03:54:47.958Z",
+  "lastPolledAt": "2026-08-10T05:26:35.741Z",
   "checkpointsApplied": [
     0,
-    1
+    1,
+    2
   ],
   "players": [
     {
@@ -14,19 +15,19 @@
       "tagLine": "four",
       "region": "VN",
       "displayName": "Raikugen",
-      "lives": 2,
+      "lives": 1,
       "eliminated": false,
       "rank": {
         "text": "GRANDMASTER I 742 LP",
         "numeric": 3542,
         "numGames": 450,
-        "readAt": "2026-08-10T03:54:48.634Z"
+        "readAt": "2026-08-10T05:26:36.342Z"
       },
       "rankAtLastCheckpoint": {
         "text": "GRANDMASTER I 742 LP",
         "numeric": 3542,
         "numGames": 450,
-        "readAt": "2026-08-09T05:12:50.855Z"
+        "readAt": "2026-08-10T05:26:36.342Z"
       },
       "gamesAtLastCheckpoint": 450,
       "recentPlacements": [
@@ -94,19 +95,19 @@
       "tagLine": "poggo",
       "region": "VN",
       "displayName": "VP Succulento",
-      "lives": 2,
+      "lives": 1,
       "eliminated": false,
       "rank": {
         "text": "MASTER I 0 LP",
         "numeric": 2800,
         "numGames": 209,
-        "readAt": "2026-08-10T03:54:48.626Z"
+        "readAt": "2026-08-10T05:26:36.375Z"
       },
       "rankAtLastCheckpoint": {
         "text": "MASTER I 0 LP",
         "numeric": 2800,
         "numGames": 209,
-        "readAt": "2026-08-09T05:12:50.836Z"
+        "readAt": "2026-08-10T05:26:36.375Z"
       },
       "gamesAtLastCheckpoint": 209,
       "recentPlacements": [
@@ -174,19 +175,19 @@
       "tagLine": "1234",
       "region": "VN",
       "displayName": "quanggisme",
-      "lives": 2,
+      "lives": 1,
       "eliminated": false,
       "rank": {
         "text": "MASTER I 0 LP",
         "numeric": 2800,
         "numGames": 450,
-        "readAt": "2026-08-10T03:54:48.647Z"
+        "readAt": "2026-08-10T05:26:36.444Z"
       },
       "rankAtLastCheckpoint": {
         "text": "MASTER I 0 LP",
         "numeric": 2800,
         "numGames": 450,
-        "readAt": "2026-08-09T05:12:50.917Z"
+        "readAt": "2026-08-10T05:26:36.444Z"
       },
       "gamesAtLastCheckpoint": 450,
       "recentPlacements": [
@@ -254,19 +255,19 @@
       "tagLine": "yotlo",
       "region": "VN",
       "displayName": "zod1ac",
-      "lives": 2,
+      "lives": 1,
       "eliminated": false,
       "rank": {
         "text": "MASTER I 301 LP",
         "numeric": 3101,
         "numGames": 323,
-        "readAt": "2026-08-10T03:54:49.114Z"
+        "readAt": "2026-08-10T05:26:36.791Z"
       },
       "rankAtLastCheckpoint": {
-        "text": "MASTER I 351 LP",
-        "numeric": 3151,
+        "text": "MASTER I 301 LP",
+        "numeric": 3101,
         "numGames": 323,
-        "readAt": "2026-08-09T05:12:51.300Z"
+        "readAt": "2026-08-10T05:26:36.791Z"
       },
       "gamesAtLastCheckpoint": 323,
       "recentPlacements": [
@@ -381,6 +382,46 @@
       "position": 2,
       "cutLine": 28,
       "livesRemaining": 2
+    },
+    {
+      "at": "2026-08-10T05:26:35.741Z",
+      "checkpoint": 2,
+      "playerId": "Raikugen#four",
+      "type": "life_lost",
+      "reason": "insufficient_games",
+      "position": 1,
+      "cutLine": 25,
+      "livesRemaining": 1
+    },
+    {
+      "at": "2026-08-10T05:26:35.741Z",
+      "checkpoint": 2,
+      "playerId": "VP Succulento#poggo",
+      "type": "life_lost",
+      "reason": "insufficient_games",
+      "position": 3,
+      "cutLine": 25,
+      "livesRemaining": 1
+    },
+    {
+      "at": "2026-08-10T05:26:35.741Z",
+      "checkpoint": 2,
+      "playerId": "quanggisme#1234",
+      "type": "life_lost",
+      "reason": "insufficient_games",
+      "position": 4,
+      "cutLine": 25,
+      "livesRemaining": 1
+    },
+    {
+      "at": "2026-08-10T05:26:35.741Z",
+      "checkpoint": 2,
+      "playerId": "zod1ac#yotlo",
+      "type": "life_lost",
+      "reason": "insufficient_games",
+      "position": 2,
+      "cutLine": 25,
+      "livesRemaining": 1
     }
   ],
   "winnerId": null
