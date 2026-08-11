@@ -2,11 +2,12 @@
   "version": 1,
   "title": "MiloMiloMootcamp",
   "startedAt": "2026-08-07T05:11:07.311Z",
-  "lastPolledAt": "2026-08-11T03:44:03.767Z",
+  "lastPolledAt": "2026-08-11T05:08:18.613Z",
   "checkpointsApplied": [
     0,
     1,
-    2
+    2,
+    3
   ],
   "players": [
     {
@@ -15,13 +16,13 @@
       "tagLine": "four",
       "region": "VN",
       "displayName": "Raikugen",
-      "lives": 1,
-      "eliminated": false,
+      "lives": 0,
+      "eliminated": true,
       "rank": {
         "text": "GRANDMASTER I 742 LP",
         "numeric": 3542,
         "numGames": 450,
-        "readAt": "2026-08-11T03:44:04.405Z"
+        "readAt": "2026-08-11T05:08:19.135Z"
       },
       "rankAtLastCheckpoint": {
         "text": "GRANDMASTER I 742 LP",
@@ -87,7 +88,10 @@
           "t": "2026-08-07T05:11:07.801Z",
           "numeric": 3542
         }
-      ]
+      ],
+      "eliminatedAt": "2026-08-11T05:08:18.613Z",
+      "eliminatedAtCheckpoint": 3,
+      "finalPosition": 1
     },
     {
       "id": "VP Succulento#poggo",
@@ -95,13 +99,13 @@
       "tagLine": "poggo",
       "region": "VN",
       "displayName": "VP Succulento",
-      "lives": 1,
-      "eliminated": false,
+      "lives": 0,
+      "eliminated": true,
       "rank": {
         "text": "MASTER I 0 LP",
         "numeric": 2800,
         "numGames": 209,
-        "readAt": "2026-08-11T03:44:04.407Z"
+        "readAt": "2026-08-11T05:08:19.126Z"
       },
       "rankAtLastCheckpoint": {
         "text": "MASTER I 0 LP",
@@ -167,7 +171,10 @@
           "t": "2026-08-07T05:11:07.795Z",
           "numeric": 2800
         }
-      ]
+      ],
+      "eliminatedAt": "2026-08-11T05:08:18.613Z",
+      "eliminatedAtCheckpoint": 3,
+      "finalPosition": 3
     },
     {
       "id": "quanggisme#1234",
@@ -175,13 +182,13 @@
       "tagLine": "1234",
       "region": "VN",
       "displayName": "quanggisme",
-      "lives": 1,
-      "eliminated": false,
+      "lives": 0,
+      "eliminated": true,
       "rank": {
         "text": "MASTER I 0 LP",
         "numeric": 2800,
         "numGames": 450,
-        "readAt": "2026-08-11T03:44:04.418Z"
+        "readAt": "2026-08-11T05:08:19.176Z"
       },
       "rankAtLastCheckpoint": {
         "text": "MASTER I 0 LP",
@@ -247,7 +254,10 @@
           "t": "2026-08-07T05:11:07.793Z",
           "numeric": 2800
         }
-      ]
+      ],
+      "eliminatedAt": "2026-08-11T05:08:18.613Z",
+      "eliminatedAtCheckpoint": 3,
+      "finalPosition": 4
     },
     {
       "id": "zod1ac#yotlo",
@@ -255,13 +265,13 @@
       "tagLine": "yotlo",
       "region": "VN",
       "displayName": "zod1ac",
-      "lives": 1,
-      "eliminated": false,
+      "lives": 0,
+      "eliminated": true,
       "rank": {
         "text": "MASTER I 251 LP",
         "numeric": 3051,
         "numGames": 323,
-        "readAt": "2026-08-11T03:44:04.848Z"
+        "readAt": "2026-08-11T05:08:19.577Z"
       },
       "rankAtLastCheckpoint": {
         "text": "MASTER I 301 LP",
@@ -343,7 +353,10 @@
           "t": "2026-08-10T17:25:28.501Z",
           "numeric": 3051
         }
-      ]
+      ],
+      "eliminatedAt": "2026-08-11T05:08:18.613Z",
+      "eliminatedAtCheckpoint": 3,
+      "finalPosition": 2
     }
   ],
   "events": [
@@ -426,6 +439,82 @@
       "position": 2,
       "cutLine": 25,
       "livesRemaining": 1
+    },
+    {
+      "at": "2026-08-11T05:08:18.613Z",
+      "checkpoint": 3,
+      "playerId": "Raikugen#four",
+      "type": "life_lost",
+      "reason": "insufficient_games",
+      "position": 1,
+      "cutLine": 23,
+      "livesRemaining": 0
+    },
+    {
+      "at": "2026-08-11T05:08:18.613Z",
+      "checkpoint": 3,
+      "playerId": "VP Succulento#poggo",
+      "type": "life_lost",
+      "reason": "insufficient_games",
+      "position": 3,
+      "cutLine": 23,
+      "livesRemaining": 0
+    },
+    {
+      "at": "2026-08-11T05:08:18.613Z",
+      "checkpoint": 3,
+      "playerId": "quanggisme#1234",
+      "type": "life_lost",
+      "reason": "insufficient_games",
+      "position": 4,
+      "cutLine": 23,
+      "livesRemaining": 0
+    },
+    {
+      "at": "2026-08-11T05:08:18.613Z",
+      "checkpoint": 3,
+      "playerId": "zod1ac#yotlo",
+      "type": "life_lost",
+      "reason": "insufficient_games",
+      "position": 2,
+      "cutLine": 23,
+      "livesRemaining": 0
+    },
+    {
+      "at": "2026-08-11T05:08:18.613Z",
+      "checkpoint": 3,
+      "playerId": "Raikugen#four",
+      "type": "eliminated",
+      "position": 1,
+      "cutLine": 23,
+      "finalPosition": 1
+    },
+    {
+      "at": "2026-08-11T05:08:18.613Z",
+      "checkpoint": 3,
+      "playerId": "zod1ac#yotlo",
+      "type": "eliminated",
+      "position": 2,
+      "cutLine": 23,
+      "finalPosition": 2
+    },
+    {
+      "at": "2026-08-11T05:08:18.613Z",
+      "checkpoint": 3,
+      "playerId": "VP Succulento#poggo",
+      "type": "eliminated",
+      "position": 3,
+      "cutLine": 23,
+      "finalPosition": 3
+    },
+    {
+      "at": "2026-08-11T05:08:18.613Z",
+      "checkpoint": 3,
+      "playerId": "quanggisme#1234",
+      "type": "eliminated",
+      "position": 4,
+      "cutLine": 23,
+      "finalPosition": 4
     }
   ],
   "winnerId": null
