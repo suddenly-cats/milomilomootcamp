@@ -2,12 +2,13 @@
   "version": 1,
   "title": "MiloMiloMootcamp",
   "startedAt": "2026-08-07T05:11:07.311Z",
-  "lastPolledAt": "2026-08-12T01:55:27.948Z",
+  "lastPolledAt": "2026-08-12T04:09:09.446Z",
   "checkpointsApplied": [
     0,
     1,
     2,
-    3
+    3,
+    4
   ],
   "players": [
     {
